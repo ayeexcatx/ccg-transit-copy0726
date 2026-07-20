@@ -1,0 +1,39 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "app_display_name": {
+      "type": "string",
+      "description": "App-level editable display name for this user"
+    },
+    "company_name": {
+      "type": "string",
+      "description": "Readable display name of the company associated with this user"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "description": "User role"
+    },
+    "app_role": {
+      "type": "string",
+      "description": "Application-level role for migrated users (e.g. Admin, CompanyOwner, Driver, Truck)"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Associated company ID for this user"
+    },
+    "driver_id": {
+      "type": "string",
+      "description": "Associated driver ID if this user is a driver"
+    },
+    "onboarding_complete": {
+      "type": "boolean",
+      "description": "Whether the user has completed onboarding"
+    }
+  },
+  "required": []
+}

@@ -1,0 +1,36 @@
+{
+  "name": "DriverProtocolAcknowledgment",
+  "type": "object",
+  "properties": {
+    "driver_id": {
+      "type": "string",
+      "description": "Driver that acknowledged the protocol"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Driver company at acknowledgment time"
+    },
+    "driver_protocol_id": {
+      "type": "string",
+      "description": "DriverProtocol version record that was acknowledged"
+    },
+    "protocol_version": {
+      "type": "number",
+      "description": "Version number of the protocol at acknowledgment time"
+    },
+    "accepted_at": {
+      "type": "string",
+      "description": "Timestamp when protocol acknowledgment was accepted"
+    },
+    "accepted_by_access_code_id": {
+      "type": "string",
+      "description": "Access code ID that submitted the acknowledgment"
+    }
+  },
+  "required": [
+    "driver_id",
+    "driver_protocol_id",
+    "protocol_version",
+    "accepted_at"
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "name": "Company",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "address": {
+      "type": "string",
+      "description": "Company address (supports multiple lines such as street, city, state, zip)"
+    },
+    "additional_contact_name": {
+      "type": "string",
+      "description": "Company-level additional contact person name"
+    },
+    "contact_methods": {
+      "type": "array",
+      "description": "List of company contact methods",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Contact person name for this contact method"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Office",
+              "Cell",
+              "Email",
+              "Fax",
+              "Other"
+            ],
+            "description": "Type of contact method"
+          },
+          "value": {
+            "type": "string",
+            "description": "Contact value such as phone number or email"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      }
+    },
+    "trucks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of truck numbers"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active",
+      "description": "Company status"
+    },
+    "sms_contact_method_index": {
+      "type": "number",
+      "description": "Zero-based contact_methods index used as the SMS target for company owner notifications"
+    },
+    "pending_profile_change": {
+      "type": "object",
+      "description": "Pending company profile edit request submitted by a company owner for admin review",
+      "properties": {
+        "requested_name": {
+          "type": "string"
+        },
+        "requested_address": {
+          "type": "string"
+        },
+        "requested_additional_contact_name": {
+          "type": "string"
+        },
+        "requested_contact_methods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "requested_contact_info": {
+          "type": "string"
+        },
+        "current_name": {
+          "type": "string"
+        },
+        "current_address": {
+          "type": "string"
+        },
+        "current_additional_contact_name": {
+          "type": "string"
+        },
+        "current_contact_methods": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "current_contact_info": {
+          "type": "string"
+        },
+        "requested_by_access_code_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Pending",
+            "Approved",
+            "Rejected"
+          ]
+        },
+        "requested_at": {
+          "type": "string"
+        },
+        "reviewed_at": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "delete": {
+      "user_condition": {
+        "data.app_role": "admin"
+      }
+    },
+    "read": {
+      "id": "{{user.data.company_id}}"
+    },
+    "update": {
+      "id": "{{user.data.company_id}}"
+    },
+    "create": {
+      "user_condition": {
+        "data.app_role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "name": "Announcement",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Announcement title"
+    },
+    "message": {
+      "type": "string",
+      "description": "Announcement message (multiline)"
+    },
+    "priority": {
+      "type": "number",
+      "description": "Priority 1 (highest) to 5 (lowest)",
+      "default": 3
+    },
+    "active_flag": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this announcement is active"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "All",
+        "Companies",
+        "AccessCodes"
+      ],
+      "default": "All",
+      "description": "Who this announcement targets"
+    },
+    "target_company_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Targeted company IDs (when target_type = Companies)"
+    },
+    "target_access_code_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Targeted access code IDs (when target_type = AccessCodes)"
+    },
+    "created_at": {
+      "type": "string",
+      "description": "ISO datetime when created"
+    },
+    "admin_activity_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "description": "When the admin activity occurred (ISO datetime)"
+          },
+          "admin_session_id": {
+            "type": "string",
+            "description": "Session ID of the admin who performed the action"
+          },
+          "admin_name": {
+            "type": "string",
+            "description": "Name or identifier of the admin who performed the action"
+          },
+          "action": {
+            "type": "string",
+            "description": "Activity action type"
+          },
+          "message": {
+            "type": "string",
+            "description": "Human-readable description of the activity"
+          }
+        }
+      },
+      "description": "Admin-only activity history for this announcement"
+    }
+  },
+  "required": [
+    "title",
+    "message"
+  ]
+}

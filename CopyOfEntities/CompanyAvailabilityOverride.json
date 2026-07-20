@@ -1,0 +1,37 @@
+{
+  "name": "CompanyAvailabilityOverride",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "Company ID"
+    },
+    "date": {
+      "type": "string",
+      "description": "Specific date (YYYY-MM-DD)"
+    },
+    "shift": {
+      "type": "string",
+      "description": "Shift name (e.g. Day Shift, Night Shift)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "unavailable"
+      ],
+      "default": "available",
+      "description": "Availability status for this specific date"
+    },
+    "available_truck_count": {
+      "type": "number",
+      "description": "Number of trucks available (optional)"
+    }
+  },
+  "required": [
+    "company_id",
+    "date",
+    "shift",
+    "status"
+  ]
+}

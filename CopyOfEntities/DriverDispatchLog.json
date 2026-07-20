@@ -1,0 +1,99 @@
+{
+  "name": "DriverDispatchLog",
+  "type": "object",
+  "properties": {
+    "dispatch_id": {
+      "type": "string",
+      "description": "Related dispatch ID"
+    },
+    "notification_id": {
+      "type": "string",
+      "description": "Related owner-facing seen notification ID"
+    },
+    "driver_access_code_id": {
+      "type": "string",
+      "description": "Driver access code ID when available"
+    },
+    "driver_id": {
+      "type": "string",
+      "description": "Related driver ID"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Related company ID"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Audit event category, such as driver_dispatch_seen"
+    },
+    "seen_kind": {
+      "type": "string",
+      "description": "Seen event kind (assigned, amended, cancelled, removed)"
+    },
+    "seen_version_key": {
+      "type": "string",
+      "description": "Seen event version key used by dedupe and event tracking"
+    },
+    "seen_at": {
+      "type": "string",
+      "description": "Timestamp when the seen event was recorded"
+    },
+    "driver_name_snapshot": {
+      "type": "string",
+      "description": "Driver display name snapshot"
+    },
+    "company_name_snapshot": {
+      "type": "string",
+      "description": "Company name snapshot"
+    },
+    "dispatch_date_snapshot": {
+      "type": "string",
+      "description": "Dispatch date snapshot"
+    },
+    "dispatch_status_snapshot": {
+      "type": "string",
+      "description": "Dispatch status snapshot"
+    },
+    "shift_label_snapshot": {
+      "type": "string",
+      "description": "Dispatch shift/time label snapshot"
+    },
+    "job_number_snapshot": {
+      "type": "string",
+      "description": "Job number snapshot"
+    },
+    "reference_tag_snapshot": {
+      "type": "string",
+      "description": "Reference tag snapshot"
+    },
+    "client_name_snapshot": {
+      "type": "string",
+      "description": "Client name snapshot"
+    },
+    "truck_numbers_snapshot": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Truck numbers associated with this seen event"
+    },
+    "dispatch_timezone_snapshot": {
+      "type": "string",
+      "description": "Dispatch timezone snapshot"
+    },
+    "message_snapshot": {
+      "type": "string",
+      "description": "Notification message snapshot"
+    },
+    "title_snapshot": {
+      "type": "string",
+      "description": "Notification title snapshot"
+    }
+  },
+  "required": [
+    "dispatch_id",
+    "event_type",
+    "seen_kind",
+    "seen_at"
+  ]
+}

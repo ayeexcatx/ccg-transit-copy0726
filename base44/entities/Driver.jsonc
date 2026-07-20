@@ -1,0 +1,107 @@
+{
+  "name": "Driver",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "Company this driver belongs to"
+    },
+    "driver_name": {
+      "type": "string",
+      "description": "Driver full name"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Driver phone number"
+    },
+    "sms_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the driver is opted into SMS notifications"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Inactive"
+      ],
+      "default": "Active",
+      "description": "Driver status"
+    },
+    "access_code_status": {
+      "type": "string",
+      "enum": [
+        "Not Requested",
+        "Pending",
+        "Created",
+        "Disabled"
+      ],
+      "default": "Not Requested",
+      "description": "Driver access code lifecycle"
+    },
+    "access_code_id": {
+      "type": "string",
+      "description": "Linked AccessCode record once created"
+    },
+    "requested_by_access_code_id": {
+      "type": "string",
+      "description": "Company owner access code ID who requested the driver code"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes about the driver"
+    },
+    "owner_sms_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the company owner has enabled SMS notifications for this driver"
+    },
+    "driver_sms_opt_in": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the driver personally opted in to SMS notifications from their Profile page"
+    }
+  },
+  "required": [
+    "company_id",
+    "driver_name",
+    "phone",
+    "status",
+    "access_code_status"
+  ],
+  "rls": {
+    "create": {
+      "data.company_id": "{{user.data.company_id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "user_condition": {
+            "data.app_role": "admin"
+          }
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        },
+        {
+          "id": "{{user.data.driver_id}}"
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "user_condition": {
+            "data.app_role": "admin"
+          }
+        },
+        {
+          "data.company_id": "{{user.data.company_id}}"
+        }
+      ]
+    },
+    "delete": {
+      "data.company_id": "{{user.data.company_id}}"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "DriverDispatchLog",
+  "type": "object",
+  "properties": {
+    "dispatch_id": {
+      "type": "string",
+      "description": "Related dispatch ID"
+    },
+    "notification_id": {
+      "type": "string",
+      "description": "Related owner-facing seen notification ID"
+    },
+    "driver_access_code_id": {
+      "type": "string",
+      "description": "Driver access code ID when available"
+    },
+    "driver_id": {
+      "type": "string",
+      "description": "Related driver ID"
+    }
+  },
+  "required": []
+}

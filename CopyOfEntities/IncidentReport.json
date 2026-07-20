@@ -1,0 +1,104 @@
+{
+  "name": "IncidentReport",
+  "type": "object",
+  "properties": {
+    "dispatch_id": {
+      "type": "string",
+      "description": "Linked dispatch ID"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Company ID"
+    },
+    "truck_number": {
+      "type": "string",
+      "description": "Truck number involved in the incident"
+    },
+    "reported_by_access_code_id": {
+      "type": "string",
+      "description": "Access code ID of the user who created the report"
+    },
+    "reported_by_name": {
+      "type": "string",
+      "description": "Readable name of the user who created the report"
+    },
+    "reported_by_code_type": {
+      "type": "string",
+      "enum": [
+        "Admin",
+        "CompanyOwner",
+        "Truck"
+      ],
+      "description": "Type of user who created the report"
+    },
+    "incident_type": {
+      "type": "string",
+      "enum": [
+        "Mechanical Issue",
+        "Damage / Non-Mechanical Issue",
+        "DOT Inspection / Pulled Over",
+        "Accident",
+        "Delay",
+        "DEPF Regen",
+        "Other"
+      ],
+      "description": "Type of incident"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Open",
+        "Completed"
+      ],
+      "default": "Open",
+      "description": "Incident status"
+    },
+    "incident_datetime": {
+      "type": "string",
+      "description": "When the incident happened (ISO datetime)"
+    },
+    "time_stopped_from": {
+      "type": "string",
+      "description": "Start of downtime or stop period"
+    },
+    "time_stopped_to": {
+      "type": "string",
+      "description": "End of downtime or stop period"
+    },
+    "location": {
+      "type": "string",
+      "description": "Location of the incident"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short summary of the incident"
+    },
+    "details": {
+      "type": "string",
+      "description": "Full incident details"
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Uploaded photo URLs or file references"
+    },
+    "created_from_dispatch": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this incident was created directly from a dispatch"
+    }
+  },
+  "required": [
+    "dispatch_id",
+    "company_id",
+    "truck_number",
+    "reported_by_access_code_id",
+    "reported_by_code_type",
+    "incident_type",
+    "status",
+    "incident_datetime",
+    "summary"
+  ]
+}

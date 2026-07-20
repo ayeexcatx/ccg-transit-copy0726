@@ -1,0 +1,42 @@
+{
+  "name": "DriverProtocol",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Protocol document title"
+    },
+    "version_number": {
+      "type": "number",
+      "description": "Monotonic version number for published protocol"
+    },
+    "content_html": {
+      "type": "string",
+      "description": "Rich text HTML body for protocol content"
+    },
+    "change_summary": {
+      "type": "string",
+      "description": "Optional summary of what changed in this version"
+    },
+    "published_at": {
+      "type": "string",
+      "description": "Timestamp when this protocol version was published"
+    },
+    "published_by_access_code_id": {
+      "type": "string",
+      "description": "Access code that published this version"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this version is the currently active protocol"
+    }
+  },
+  "required": [
+    "title",
+    "version_number",
+    "content_html",
+    "published_at",
+    "is_active"
+  ]
+}

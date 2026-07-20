@@ -1,0 +1,40 @@
+{
+  "name": "LiveDispatchBoardRequest",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Dispatch board date in YYYY-MM-DD format",
+      "required": true
+    },
+    "shift_time": {
+      "type": "string",
+      "description": "Shift label, such as Day Shift or Night Shift",
+      "required": true
+    },
+    "job_number": {
+      "type": "string",
+      "description": "Job number for the board group",
+      "required": true
+    },
+    "client_name": {
+      "type": "string",
+      "description": "Client name for display on the board"
+    },
+    "start_location": {
+      "type": "string",
+      "description": "Optional start location for display on the board"
+    },
+    "requested_count": {
+      "type": "number",
+      "description": "Total requested truck slots for this date + shift + job number",
+      "required": true
+    }
+  },
+  "required": [
+    "date",
+    "shift_time",
+    "job_number",
+    "requested_count"
+  ]
+}

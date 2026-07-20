@@ -1,0 +1,63 @@
+{
+  "name": "CompanyScoringEvent",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "Company ID this event is linked to",
+      "required": true
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Type of scoring event (e.g. Cancellation, Late Arrival, Truck Issue, Driver Issue, Customer Complaint, Exceptional Performance, Other)",
+      "required": true
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time when the event occurred",
+      "required": true
+    },
+    "dispatch_id": {
+      "type": "string",
+      "description": "Related dispatch ID, if applicable"
+    },
+    "truck_number": {
+      "type": "string",
+      "description": "Truck number involved in the event, if applicable"
+    },
+    "driver_id": {
+      "type": "string",
+      "description": "Related driver ID, if applicable"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ],
+      "description": "Severity level of the event"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Detailed notes about the event"
+    },
+    "impacts_completion_rate": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this event should impact the company's completion rate metric"
+    },
+    "include_in_trends": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this event should be included in trend analysis"
+    }
+  },
+  "required": [
+    "company_id",
+    "event_type",
+    "event_date"
+  ]
+}

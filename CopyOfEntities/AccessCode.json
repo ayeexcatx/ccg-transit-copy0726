@@ -1,0 +1,115 @@
+{
+  "name": "AccessCode",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Unique access code (8-10 characters)"
+    },
+    "label": {
+      "type": "string",
+      "description": "Human-readable label"
+    },
+    "active_flag": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this code is active"
+    },
+    "code_type": {
+      "type": "string",
+      "enum": [
+        "Truck",
+        "CompanyOwner",
+        "Admin",
+        "Driver"
+      ],
+      "description": "Type of access code"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Associated company ID"
+    },
+    "company_name": {
+      "type": "string",
+      "description": "Readable display name of the associated company (display-only convenience field; company_id is the source of truth)"
+    },
+    "allowed_trucks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Truck numbers this code can access"
+    },
+    "driver_id": {
+      "type": "string",
+      "description": "Associated driver ID for Driver access codes"
+    },
+    "used_by_user_id": {
+      "type": "string",
+      "description": "User ID that first claimed this code"
+    },
+    "used_at": {
+      "type": "string",
+      "description": "Timestamp when this code was first claimed"
+    },
+    "usage_status": {
+      "type": "string",
+      "enum": [
+        "Unused",
+        "Used"
+      ],
+      "description": "Single-use claim status"
+    },
+    "sms_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this user should receive SMS notifications"
+    },
+    "sms_phone": {
+      "type": "string",
+      "description": "SMS-only phone number for notifications"
+    },
+    "sms_consent_given": {
+      "type": "boolean",
+      "description": "Whether explicit SMS consent was captured"
+    },
+    "sms_consent_at": {
+      "type": "string",
+      "description": "Timestamp when SMS consent was captured"
+    },
+    "sms_consent_method": {
+      "type": "string",
+      "description": "How SMS consent was captured (e.g. profile toggle, web form, verbal)"
+    },
+    "sms_opted_out_at": {
+      "type": "string",
+      "description": "Timestamp when SMS opt-out was recorded"
+    },
+    "sms_intro_sent_at": {
+      "type": "string",
+      "description": "Timestamp when introductory/welcome SMS was sent"
+    },
+    "available_views": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Admin",
+          "CompanyOwner"
+        ]
+      },
+      "description": "Workspace views available to this user"
+    },
+    "linked_company_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Company IDs this user can access in company-owner view"
+    }
+  },
+  "required": [
+    "code",
+    "code_type"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "recipient_type": {
+      "type": "string",
+      "enum": [
+        "Admin",
+        "AccessCode"
+      ],
+      "description": "Type of recipient"
+    },
+    "recipient_access_code_id": {
+      "type": "string",
+      "description": "Access code ID for AccessCode recipients"
+    },
+    "recipient_id": {
+      "type": "string",
+      "description": "Legacy fallback recipient ID (mirrors recipient_access_code_id for owner/truck)"
+    },
+    "recipient_company_id": {
+      "type": "string",
+      "description": "Company ID for company-level notifications"
+    },
+    "title": {
+      "type": "string",
+      "description": "Notification title"
+    },
+    "message": {
+      "type": "string",
+      "description": "Notification message"
+    },
+    "related_dispatch_id": {
+      "type": "string",
+      "description": "Related dispatch ID"
+    },
+    "read_flag": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether notification has been read / resolved"
+    },
+    "owner_read_at": {
+      "type": "string",
+      "description": "Timestamp when a company owner marked a shared owner notification as read"
+    },
+    "owner_read_by_access_code_id": {
+      "type": "string",
+      "description": "AccessCode ID of the company owner who marked a shared owner notification as read"
+    },
+    "owner_read_by_name": {
+      "type": "string",
+      "description": "Display name of the company owner who marked a shared owner notification as read"
+    },
+    "notification_category": {
+      "type": "string",
+      "description": "Category used to distinguish notification behaviors, such as dispatch_update_info"
+    },
+    "notification_type": {
+      "type": "string",
+      "description": "General notification type, such as informational or confirmation"
+    },
+    "dispatch_status_key": {
+      "type": "string",
+      "description": "Dedup key: '{dispatch_id}:{status}:{owner_id}' \u2014 used to prevent duplicate owner notifications for same dispatch+status+owner"
+    },
+    "required_trucks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Trucks that must confirm before this notification is resolved (owner notifications only)"
+    }
+  },
+  "required": [
+    "recipient_type",
+    "title",
+    "message"
+  ]
+}

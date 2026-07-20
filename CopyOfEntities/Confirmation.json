@@ -1,0 +1,43 @@
+{
+  "name": "Confirmation",
+  "type": "object",
+  "properties": {
+    "dispatch_id": {
+      "type": "string",
+      "description": "Dispatch ID"
+    },
+    "access_code_id": {
+      "type": "string",
+      "description": "Access code ID that confirmed"
+    },
+    "truck_number": {
+      "type": "string",
+      "description": "Truck number that confirmed"
+    },
+    "confirmation_type": {
+      "type": "string",
+      "enum": [
+        "Dispatched",
+        "Amended",
+        "Canceled"
+      ],
+      "description": "Type of confirmation"
+    },
+    "confirmed_at": {
+      "type": "string",
+      "description": "Confirmation timestamp"
+    },
+    "confirmed_by_name": {
+      "type": "string",
+      "description": "Display name of the person or truck/access code that confirmed"
+    },
+    "confirmed_by_type": {
+      "type": "string",
+      "description": "Type of confirmer, such as Admin, CompanyOwner, Truck, Driver, or AccessCode"
+    }
+  },
+  "required": [
+    "dispatch_id",
+    "truck_number"
+  ]
+}

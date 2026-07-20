@@ -1,0 +1,60 @@
+{
+  "name": "IncidentUpdate",
+  "type": "object",
+  "properties": {
+    "incident_report_id": {
+      "type": "string",
+      "description": "Parent incident report ID"
+    },
+    "dispatch_id": {
+      "type": "string",
+      "description": "Linked dispatch ID"
+    },
+    "company_id": {
+      "type": "string",
+      "description": "Company ID"
+    },
+    "truck_number": {
+      "type": "string",
+      "description": "Truck number involved"
+    },
+    "added_by_access_code_id": {
+      "type": "string",
+      "description": "Access code ID of the user adding the update"
+    },
+    "added_by_code_type": {
+      "type": "string",
+      "enum": [
+        "Admin",
+        "CompanyOwner",
+        "Truck"
+      ],
+      "description": "Type of user adding the update"
+    },
+    "update_datetime": {
+      "type": "string",
+      "description": "When this update was added (ISO datetime)"
+    },
+    "update_text": {
+      "type": "string",
+      "description": "Follow-up update text"
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Uploaded photo URLs or file references for this update"
+    }
+  },
+  "required": [
+    "incident_report_id",
+    "dispatch_id",
+    "company_id",
+    "truck_number",
+    "added_by_access_code_id",
+    "added_by_code_type",
+    "update_datetime",
+    "update_text"
+  ]
+}
