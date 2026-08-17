@@ -151,22 +151,5 @@
   "required": [
     "name"
   ],
-  "rls": {
-    "delete": {
-      "user_condition": {
-        "data.app_role": "admin"
-      }
-    },
-    "read": {
-      "id": "{{user.data.company_id}}"
-    },
-    "update": {
-      "id": "{{user.data.company_id}}"
-    },
-    "create": {
-      "user_condition": {
-        "data.app_role": "admin"
-      }
-    }
-  }
+  "rls": {}
 }

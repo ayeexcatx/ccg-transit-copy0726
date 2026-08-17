@@ -69,39 +69,5 @@
     "status",
     "access_code_status"
   ],
-  "rls": {
-    "create": {
-      "data.company_id": "{{user.data.company_id}}"
-    },
-    "read": {
-      "$or": [
-        {
-          "user_condition": {
-            "data.app_role": "admin"
-          }
-        },
-        {
-          "data.company_id": "{{user.data.company_id}}"
-        },
-        {
-          "id": "{{user.data.driver_id}}"
-        }
-      ]
-    },
-    "update": {
-      "$or": [
-        {
-          "user_condition": {
-            "data.app_role": "admin"
-          }
-        },
-        {
-          "data.company_id": "{{user.data.company_id}}"
-        }
-      ]
-    },
-    "delete": {
-      "data.company_id": "{{user.data.company_id}}"
-    }
-  }
+  "rls": {}
 }

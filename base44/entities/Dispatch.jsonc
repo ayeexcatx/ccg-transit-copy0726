@@ -134,6 +134,18 @@
             "type": "string",
             "description": "Name or identifier of the admin who performed the action"
           },
+          "actor_type": {
+            "type": "string",
+            "description": "Actor type when activity was performed by non-admin users (e.g. CompanyOwner)"
+          },
+          "actor_id": {
+            "type": "string",
+            "description": "Actor ID when activity was performed by non-admin users"
+          },
+          "actor_name": {
+            "type": "string",
+            "description": "Display name for the actor who performed the activity"
+          },
           "action": {
             "type": "string",
             "description": "Activity action type"
@@ -145,6 +157,31 @@
         }
       },
       "description": "Admin-only activity history for this dispatch"
+    },
+    "owner_assignment_by_truck": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "owner_access_code_id": {
+            "type": "string",
+            "description": "Selected owner access code ID for the truck assignment"
+          },
+          "owner_name": {
+            "type": "string",
+            "description": "Display name saved for the selected owner at assignment time"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the owner assignment entry was last updated"
+          },
+          "updated_by_owner_access_code_id": {
+            "type": "string",
+            "description": "Owner access code ID that last updated this owner assignment entry"
+          }
+        }
+      },
+      "description": "Per-truck owner informational assignment map keyed by truck number"
     },
     "admin_internal_notes": {
       "type": "string",
